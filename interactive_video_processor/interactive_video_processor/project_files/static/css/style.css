@@ -1,0 +1,178 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center; /* Center the main container */
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px; /* Max width for the whole content area */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #1c1e21;
+    text-align: center;
+}
+h1 { margin-bottom: 30px; }
+h2 { margin-bottom: 15px; font-size: 1.5em; }
+
+.upload-section {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#videoUploadForm input[type="file"] {
+    margin-bottom: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#videoUploadForm button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+#videoUploadForm button:hover {
+    background-color: #0056b3;
+}
+
+.status-message {
+    margin-top: 15px;
+    font-weight: bold;
+}
+.status-message.error { color: red; }
+.status-message.success { color: green; }
+
+#playerArea.hidden, #initialMessage.hidden {
+    display: none;
+}
+
+#initialMessage {
+    text-align: center;
+    padding: 20px;
+    background: #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.player-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    display: flex; /* For centering player if smaller than container */
+    flex-direction: column;
+    align-items: center;
+}
+
+.video-js {
+    border-radius: 6px;
+    width: 100%; /* Make player responsive */
+    max-width: 720px; /* Control max player width */
+    height: auto;
+}
+
+.subtitle-controls {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    background-color: #f7f8fa;
+    width: 100%;
+    max-width: 720px; /* Match player width */
+    box-sizing: border-box;
+}
+
+.subtitle-controls h3 {
+    margin-top: 0;
+    font-size: 1.1em;
+    color: #333;
+    text-align: left;
+}
+
+.subtitle-controls div {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.subtitle-controls label {
+    margin-right: 10px;
+    min-width: 130px;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.subtitle-controls input[type="file"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#interaction-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#interaction-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#interaction-content {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 8px;
+    min-width: 320px;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+#interaction-content h2 { margin-top: 0; color: #1c1e21; }
+#interaction-content p { font-size: 1.1em; line-height: 1.6; }
+#interaction-content img { max-width: 100%; height: auto; border-radius: 4px; margin-top: 15px; }
+#interaction-content button {
+    background-color: #007bff; color: white; border: none;
+    padding: 10px 15px; margin: 5px; border-radius: 5px; cursor: pointer; font-size: 1em;
+}
+#interaction-content button:hover { background-color: #0056b3; }
+
+#continue-button {
+    margin-top: 25px; padding: 12px 25px; font-size: 1.1em; font-weight: bold;
+    cursor: pointer; background-color: #4CAF50; color: white; border: none;
+    border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.2s ease;
+}
+#continue-button:hover { background-color: #45a049; }
+
+.video-js .vjs-control-bar { z-index: 1; }

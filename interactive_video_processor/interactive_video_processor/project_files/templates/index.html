@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Video Processor (Flask)</title>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <h1>Interactive HLS Video Player</h1>
+
+        <div class="upload-section">
+            <h2>Upload Your Video (e.g., MP4)</h2>
+            <form id="videoUploadForm">
+                <input type="file" id="videoFile" name="videoFile" accept="video/mp4,video/quicktime,video/x-matroska,video/webm,video/x-msvideo" required>
+                <button type="submit">Upload and Process</button>
+            </form>
+            <div id="uploadStatus" class="status-message"></div>
+        </div>
+
+        <div id="playerArea" class="hidden">
+            <div class="player-container">
+                <video
+                    id="my-video"
+                    class="video-js vjs-default-skin vjs-big-play-centered"
+                    controls
+                    preload="auto"
+                    width="720"
+                    height="405"
+                    data-setup='{}'>
+                    <!-- HLS Source will be set by JavaScript -->
+                </video>
+
+                <div class="subtitle-controls">
+                    <h3>Upload Subtitles (VTT format)</h3>
+                    <div>
+                        <label for="sub-az">Azerbaijani (AZ):</label>
+                        <input type="file" id="sub-az" accept=".vtt" data-lang="az" data-label="Azerbaijani" disabled>
+                    </div>
+                    <div>
+                        <label for="sub-en">English (EN):</label>
+                        <input type="file" id="sub-en" accept=".vtt" data-lang="en" data-label="English" disabled>
+                    </div>
+                    <div>
+                        <label for="sub-ru">Russian (RU):</label>
+                        <input type="file" id="sub-ru" accept=".vtt" data-lang="ru" data-label="Russian" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="initialMessage">
+            <p>Please upload a video to start.</p>
+            <p>For testing, you can download the Sintel trailer (<a href="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" target="_blank" rel="noopener noreferrer">Sintel.mp4</a>) and upload it.</p>
+        </div>
+
+
+        <div id="interaction-overlay" class="hidden">
+            <div id="interaction-content">
+                <!-- Content will be injected here -->
+            </div>
+            <button id="continue-button">Continue Video</button>
+        </div>
+    </div>
+
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
